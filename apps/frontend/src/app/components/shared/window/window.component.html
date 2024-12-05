@@ -1,0 +1,33 @@
+<article class="relative rounded-xl overflow-hidden border border-zinc-800">
+    <img
+        [src]="background ? background : 'https://www.nuvent.com.br/wp-content/uploads/2019/12/EVP_0141-scaled.jpg'"
+        alt="background"
+        class="-z-30 object-cover"
+        fill>
+    <section class="bg-black/80">
+        <header class="flex gap-7 p-6 items-center">
+            <figure class="w-28 h-28 relative">
+                <img
+                    [src]="image ? image : 'https://t3.ftcdn.net/jpg/08/12/70/12/360_F_812701281_qDF1YDwHrQgs2BbUCIrgqzkdkNhokjwp.jpg'"
+                    alt="Event"
+                    class="rounded-full object-cover"
+                    fill>
+            </figure>
+            <div class="flex flex-col">
+                <p class="text-sm text-zinc-300">
+                    {{label ?? "Detalhes do Evento:"}}
+                </p>
+                <h1 class="text-4xl font-bold leading-tight text-white">
+                    {{title ?? "Título do Evento" }}
+                </h1>
+            </div>
+            <div class="flex-1"></div>
+            <img src="/assets/elements.png" alt="Elementos decorativos"
+                width="140" height="140">
+        </header>
+        <section
+            class="bg-black/70 border-t-4 border-zinc-800 rounded-b-xl p-7">
+            <ng-content></ng-content>
+        </section>
+    </section>
+</article>
