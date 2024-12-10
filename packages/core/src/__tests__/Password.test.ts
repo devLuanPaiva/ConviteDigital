@@ -23,4 +23,8 @@ describe("Password", () => {
     const password2 = Password.new();
     expect(password1).not.toEqual(password2);
   });
+  it("should return an empty string if size is zero", () => {
+    const password = Password.new(0);
+    expect(password).toBe("");
+  });
 });
