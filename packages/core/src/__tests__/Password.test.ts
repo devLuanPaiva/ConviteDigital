@@ -27,4 +27,7 @@ describe("Password", () => {
     const password = Password.new(0);
     expect(password).toBe("");
   });
+  it("should throw an error if size is negative", () => {
+    expect(() => Password.new(-1)).toThrow();
+  });
 });
