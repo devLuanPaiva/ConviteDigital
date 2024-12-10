@@ -5,6 +5,7 @@ import { BigLogoComponent } from './components/template/big-logo/big-logo.compon
 
 @Component({
     selector: 'app-root',
+    standalone: true,
     imports: [RouterModule, CommonModule, BigLogoComponent],
     templateUrl: './app.component.html',
     encapsulation: ViewEncapsulation.None
