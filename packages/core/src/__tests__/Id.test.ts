@@ -15,4 +15,8 @@ describe("Id", () => {
     const invalidId = "invalid-uuid";
     expect(Id.valid(invalidId)).toBe(false);
   });
+  it("should return true for a valid UUID", () => {
+    const validId = uuid();
+    expect(Id.valid(validId)).toBe(true);
+  });
 });
