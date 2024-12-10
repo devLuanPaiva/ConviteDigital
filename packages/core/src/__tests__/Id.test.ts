@@ -11,4 +11,8 @@ describe("Id", () => {
     const id2 = Id.new();
     expect(id1).not.toEqual(id2);
   });
+  it("should return false for an invalid UUID", () => {
+    const invalidId = "invalid-uuid";
+    expect(Id.valid(invalidId)).toBe(false);
+  });
 });
