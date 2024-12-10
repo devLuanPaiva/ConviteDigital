@@ -9,4 +9,13 @@ describe("Password", () => {
     const password = Password.new(customSize);
     expect(password).toHaveLength(customSize);
   });
+  it('should generate a password containing only allowed characters', () => {
+    const allowedCharacters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-{}[]|\\:;"\'<>,.?/~`';
+    const password = Password.new(50); 
+
+    for (const char of password) {
+      expect(allowedCharacters).toContain(char);
+    }
+  });
 });
