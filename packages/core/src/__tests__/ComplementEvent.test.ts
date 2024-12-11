@@ -30,4 +30,11 @@ describe("complementEvent", () => {
     expect(completedEvent.expectedAudience).toBe(100);
     expect(completedEvent.alias).toBe(partialEvent.alias);
   });
+  it("should throw an error if validation fails", () => {
+    const partialEvent: Partial<Event> = {};
+
+    expect(() => complementEvent(partialEvent)).toThrow(
+      /Alias é obrigatório, Nome é obrigatório, Descrição é obrigatória, Data é obrigatória, Local é obrigatório, Público esperado é obrigatório, Imagem é obrigatória, Imagem de fundo é obrigatória/
+    );
+  });
 });
