@@ -1,5 +1,4 @@
 import { Event, complementEvent } from "../event";
-import { Id, Password } from "../utils";
 
 jest.mock("../utils", () => ({
   Id: {
