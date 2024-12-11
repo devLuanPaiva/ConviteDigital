@@ -30,4 +30,15 @@ describe("complement guest", () => {
     expect(guest.hasCompanions).toBe(true);
     expect(guest.numberOfCompanions).toBe(2);
   });
+  it("should set numberOfCompanions to 0 if hasCompanions is false", () => {
+    const partialGuest = {
+      name: "Jack Doe",
+      email: "jack.doe@example.com",
+      confirmed: true,
+      hasCompanions: false,
+      numberOfCompanions: 5,
+    };
+    const guest = complementGuest(partialGuest);
+    expect(guest.numberOfCompanions).toBe(0);
+  });
 });
