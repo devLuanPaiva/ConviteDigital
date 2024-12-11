@@ -15,4 +15,9 @@ describe("Alias", () => {
     const output = Alias.format(input);
     expect(output).toBe("");
   });
+  it('should not modify strings without spaces and already in lowercase', () => {
+    const input = 'already-formatted';
+    const output = Alias.format(input);
+    expect(output).toEqual(input);
+  });
 });
