@@ -1,9 +1,9 @@
 import { Alias } from "../utils";
 describe("Alias", () => {
   it("should replace spaces with hyphens and convert to lowercase", () => {
-    const input = "Hello world!";
+    const input = "Hello world";
     const output = Alias.format(input);
-    expect(output).toBe("hello-world!");
+    expect(output).toBe("hello-world");
   });
   it("should handle strings with multiple spaces correctly", () => {
     const input = "  Multiple   Spaces   ";
@@ -19,5 +19,10 @@ describe("Alias", () => {
     const input = 'already-formatted';
     const output = Alias.format(input);
     expect(output).toEqual(input);
+  });
+  it('should handle strings with special characters', () => {
+    const input = 'Special #Characters!';
+    const output = Alias.format(input);
+    expect(output).toBe('special-#characters!');
   });
 });
