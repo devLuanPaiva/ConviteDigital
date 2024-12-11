@@ -17,4 +17,17 @@ describe("validate Event", () => {
     const errors = validateEvent(event);
     expect(errors).toEqual([]);
   });
+  it("should return errors for missing required fields", () => {
+    const event: Partial<Event> = {};
+    const errors = validateEvent(event);
+
+    expect(errors).toContain("Alias é obrigatório");
+    expect(errors).toContain("Nome é obrigatório");
+    expect(errors).toContain("Descrição é obrigatória");
+    expect(errors).toContain("Data é obrigatória");
+    expect(errors).toContain("Local é obrigatório");
+    expect(errors).toContain("Público esperado é obrigatório");
+    expect(errors).toContain("Imagem é obrigatória");
+    expect(errors).toContain("Imagem de fundo é obrigatória");
+  });
 });
