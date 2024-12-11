@@ -30,4 +30,10 @@ describe("validate Event", () => {
     expect(errors).toContain("Imagem é obrigatória");
     expect(errors).toContain("Imagem de fundo é obrigatória");
   });
+  it("should return an error for expectedAudience less than 1", () => {
+    const event: Partial<Event> = { expectedAudience: 0 };
+    const errors = validateEvent(event);
+
+    expect(errors).toContain("Público esperado é obrigatório");
+  });
 });
