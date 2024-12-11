@@ -25,4 +25,7 @@ describe("DateFormatter", () => {
     expect(date.getHours()).toBe(14);
     expect(date.getMinutes()).toBe(30);
   });
+  it("should throw an error if the input string is invalid", () => {
+    expect(() => DateFormatter.unformat("invalid-date")).toThrow();
+  });
 });
