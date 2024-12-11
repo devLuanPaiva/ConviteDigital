@@ -15,14 +15,19 @@ describe("Alias", () => {
     const output = Alias.format(input);
     expect(output).toBe("");
   });
-  it('should not modify strings without spaces and already in lowercase', () => {
-    const input = 'already-formatted';
+  it("should not modify strings without spaces and already in lowercase", () => {
+    const input = "already-formatted";
     const output = Alias.format(input);
     expect(output).toEqual(input);
   });
-  it('should handle strings with special characters', () => {
-    const input = 'Special #Characters!';
+  it("should handle strings with special characters", () => {
+    const input = "Special #Characters!";
     const output = Alias.format(input);
-    expect(output).toBe('special-#characters!');
+    expect(output).toBe("special-#characters!");
+  });
+  it("should handle strings with numbers", () => {
+    const input = "String with 123 numbers";
+    const output = Alias.format(input);
+    expect(output).toBe("string-with-123-numbers");
   });
 });
