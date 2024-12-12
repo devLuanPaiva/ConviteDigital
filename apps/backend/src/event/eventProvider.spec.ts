@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { PrismaProvider } from '../../src/database/prisma.provider';
 import { EventProvider } from './event.provider';
-import { Event } from 'core';
+import { Event, Guest } from 'core';
 
 jest.mock('../../src/database/prisma.provider');
 
@@ -58,5 +58,42 @@ describe('EventProvider', () => {
       },
     });
     expect(result).toEqual(event);
+  });
+  it('should save a guest for an event', async () => {
+    const event: Event = {
+      id: '1',
+      alias: 'teste',
+      description: 'Teste',
+      location: 'Local',
+      date: new Date(),
+      guests: [],
+      password: '',
+      name: '',
+      image: '',
+      backgroundImage: '',
+      expectedAudience: 0,
+    };
+
+    const guest: Guest = {
+      id: '1',
+      name: 'Jhon',
+      email: 'teste@teste.com',
+      numberOfCompanions: 2,
+      hasCompanions: false,
+      confirmed: false,
+    };
+
+    prismaMock.guest.create.mockResolvedValue(guest);
+
+    const result = await provider.saveGuest(event, guest);
+
+    expect(prismaMock.guest.create).toHaveBeenCalledWith({
+      data: {
+        ...guest,
+        guestName: guest.name,
+        event: { connect: { id: event.id } },
+      },
+    });
+    expect(result).toEqual(guest);
   });
 });
