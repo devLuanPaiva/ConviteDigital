@@ -96,4 +96,25 @@ describe('EventProvider', () => {
     });
     expect(result).toEqual(guest);
   });
+  it('shoult retrive all events', async () => {
+    const events: Event[] = [
+      {
+        id: '1',
+        alias: 'teste',
+        description: 'Teste',
+        location: 'Local',
+        date: new Date(),
+        guests: [],
+        password: '',
+        name: '',
+        image: '',
+        backgroundImage: '',
+        expectedAudience: 0,
+      },
+    ];
+    prismaMock.event.findMany.mockResolvedValue(events);
+    const result = await provider.searchAll();
+    expect(prismaMock.event.findMany).toHaveBeenCalled();
+    expect(result).toEqual(events);
+  });
 });
