@@ -139,4 +139,39 @@ describe('EventProvider', () => {
     });
     expect(result).toEqual(event);
   });
+
+  it('should retrieve an event by alias', async () => {
+    const event: Event = {
+      id: '1',
+      alias: 'teste',
+      description: 'Teste',
+      location: 'Local',
+      date: new Date(),
+      guests: [],
+      password: '',
+      name: '',
+      image: '',
+      backgroundImage: '',
+      expectedAudience: 0,
+    };
+    prismaMock.event.findUnique.mockResolvedValue(event);
+    const result = await provider.searchByAlias('teste', false);
+    expect(prismaMock.event.findUnique).toHaveBeenCalledWith({
+      where: { alias: 'teste' },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        date: true,
+        location: true,
+        image: true,
+        imageBackground: true,
+        alias: true,
+        password: false,
+        expectedAudience: false,
+        guests: false,
+      },
+    });
+    expect(result).toEqual(event);
+  })
 });
