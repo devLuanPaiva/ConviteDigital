@@ -96,7 +96,7 @@ describe('EventProvider', () => {
     });
     expect(result).toEqual(guest);
   });
-  it('shoult retrive all events', async () => {
+  it('shoult retrieve all events', async () => {
     const events: Event[] = [
       {
         id: '1',
@@ -116,5 +116,27 @@ describe('EventProvider', () => {
     const result = await provider.searchAll();
     expect(prismaMock.event.findMany).toHaveBeenCalled();
     expect(result).toEqual(events);
+  });
+  it('should retrieve an event by ID', async () => {
+    const event: Event = {
+      id: '1',
+      alias: 'teste',
+      description: 'Teste',
+      location: 'Local',
+      date: new Date(),
+      guests: [],
+      password: '',
+      name: '',
+      image: '',
+      backgroundImage: '',
+      expectedAudience: 0,
+    };
+    prismaMock.event.findUnique.mockResolvedValue(event);
+    const result = await provider.searchById('1', true);
+    expect(prismaMock.event.findUnique).toHaveBeenCalledWith({
+      where: { id: '1' },
+      include: { guests: true },
+    });
+    expect(result).toEqual(event);
   });
 });
