@@ -16,7 +16,7 @@ model Event {
   location         String
   date             DateTime
   image            String
-  imageBackground  String
+  backgroundImage  String
   expectedAudience Int
   guests           Guest[]
 
