@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { WindowComponent } from '../../../components/shared/window/window.component';
+import { WindowComponent } from '../../components/shared/window/window.component';
 import { CommonModule } from '@angular/common';
 import { Event } from 'core';
-import { EventService } from '../../../services/event.service';
+import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
-import { FormEventComponent } from '../../../components/event/form-event/form-event.component';
+import { FormEventComponent } from '../../components/event/form-event/form-event.component';
 
 @Component({
   selector: 'app-event',
