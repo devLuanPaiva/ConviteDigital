@@ -1,0 +1,23 @@
+{
+    "name": "eventos",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "run-p packages:* apps:*",
+        "build": "run-s build:packages build:apps",
+        "build:apps": "run-p build:frontend build:backend",
+        "build:frontend": "cd apps/frontend && npm run build",
+        "build:backend": "cd apps/backend && npm run build",
+        "build:packages": "cd packages/core && npm run build",
+        "apps:frontend": "cd apps/frontend && npm run start",
+        "apps:backend": "cd apps/backend && npm run start:dev",
+        "packages:core": "cd packages/core && npm run dev"
+    },
+    "dependencies": {
+        "npm-run-all": "^4.1.5"
+    },
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
+}

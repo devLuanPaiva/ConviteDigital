@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+    .container {
+        @apply mx-auto max-w-7xl px-4;
+    }
+
+    .button {
+        @apply flex justify-center items-center gap-2 rounded-md px-9 h-9 text-sm font-semibold;
+
+        &.blue {
+            @apply bg-blue-500 text-white;
+
+            &:hover {
+                @apply bg-blue-600;
+            }
+        }
+
+        &.red {
+            @apply bg-red-500 text-white;
+
+            &:hover {
+                @apply bg-red-600;
+            }
+        }
+
+        &.green {
+            @apply bg-green-500 text-white;
+
+            &:hover {
+                @apply bg-green-600;
+            }
+        }
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
