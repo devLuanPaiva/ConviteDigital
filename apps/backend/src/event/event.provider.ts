@@ -47,7 +47,7 @@ export class EventProvider {
         date: true,
         location: true,
         image: true,
-        imageBackground: true,
+        backgroundImage: true,
         alias: true,
         password: completed,
         expectedAudience: completed,
