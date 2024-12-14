@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class StepsComponent {
   @Input() labels: string[] = [];
   @Input() actionLabel: string = '';
-  @Input() allowNextStep: boolean[] = [];
+  @Input() allowNextStep?: boolean[];
   @Output() action = new EventEmitter<void>();
 
   currentStep: number = 0;
@@ -31,5 +31,16 @@ export class StepsComponent {
 
   onAction(): void {
     this.action.emit();
+  }
+
+  renderLabels(): {selected: boolean; label:string; index: number}[]{
+    return this.labels.map((label, index) => ({
+      selected: index === this.currentStep,
+      label,
+      index,
+    }));
+  }
+  get getNextStep(): boolean {
+    return this.allowNextStep?.[this.currentStep] ?? true
   }
 }
