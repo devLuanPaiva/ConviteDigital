@@ -39,6 +39,9 @@ export class FormEventComponent implements OnInit, OnDestroy {
   }
 
   toggleEvent(alias: string, value: any): void {
+    if (alias === 'date') {
+      value = DateFormatter.format(value); 
+    }
     this.event = { ...this.event, [alias]: value };
     this.eventService.toggleEvent(this.event);
     if (alias === 'alias') {
@@ -46,7 +49,13 @@ export class FormEventComponent implements OnInit, OnDestroy {
     }
     this.updateAllowNextStep();
   }
-
+  
+  formatEventDate(date: string | Date | undefined): string {
+    const validDate = typeof date === 'string' ? new Date(date) : date || new Date();
+    return DateFormatter.format(validDate);
+  }
+  
+  
   saveEvent(): void {
     this.eventService.saveEvent();
   }
