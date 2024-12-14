@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class StepsComponent {
   @Input() labels: string[] = [];
   @Input() actionLabel: string = '';
-  @Input() allowNextStep?: boolean[] = [];
+  @Input() allowNextStep: boolean[] = [];
   @Output() action = new EventEmitter<void>();
 
   currentStep: number = 0;
