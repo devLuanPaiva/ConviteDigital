@@ -1,8 +1,6 @@
-<div class="w-full flex flex-col min-h-screen">
-    <div class="flex-1 flex flex-col" [ngStyle]="{ background: 'url(public/background.png)' }">
-        <app-logo/>
-        <main class=" min-h-full flex-1 flex flex-col justify-center py-10 container items-center" >
-            <router-outlet/>
-        </main>
-    </div>
+<div class="flex-1 flex flex-col items-center py-10 min-h-screen " [ngStyle]="{ background: 'url(public/background.png)' }">
+    <app-logo/>
+    <main class="flex-1 flex flex-col justify-center py-10 container" >
+        <router-outlet/>
+    </main>
 </div>
