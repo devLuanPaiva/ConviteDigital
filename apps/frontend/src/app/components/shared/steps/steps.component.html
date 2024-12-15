@@ -19,8 +19,17 @@
     </nav>
   
     <main>
-      <ng-content select="[step{{ currentStep }}]"></ng-content>
+      <ng-container *ngIf="currentStep === 0">
+        <ng-content select="[step0]"></ng-content>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 1">
+        <ng-content select="[step1]"></ng-content>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 2">
+        <ng-content select="[step2]"></ng-content>
+      </ng-container>
     </main>
+    
   
     <footer class="flex justify-between">
       <button
