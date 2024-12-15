@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MessageService } from '../../../services/message.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,7 +13,7 @@ export class ClipboardComponent {
   @Input() label: string = '';
   @Input() text: string = '';
   @Input() observation: string = '';
-  @Input() icon?: string = '';
+  @Input() icon?: IconDefinition;
   faCopy = faCopy;
   constructor(private readonly message: MessageService) {}
 
