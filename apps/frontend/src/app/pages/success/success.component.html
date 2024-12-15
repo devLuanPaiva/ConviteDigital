@@ -8,19 +8,19 @@
     <section class="flex gap-5 items-center py-6">
         <div class="flex-1 flex flex-col gap-5">
             <app-clipboard
-                [icon]="''"
+                [icon]="faLink"
                 [label]="'Link para convidar'"
                 [text]="currentURL + '/convite/' + event.id" />
             <app-clipboard
-                [icon]="''"
+                [icon]="faLink"
                 [label]="'Link Administrador'"
                 [text]="currentURL + '/event/admin/' + event.id" />
             <app-clipboard
-                [icon]="''"
+                [icon]="faKey"
                 [label]="'Senha Administrador'"
                 [text]="event.password? event.password :''"
                 [observation]="'Essa senha não será exibida novamente, então guarde-a com cuidado!'" />
         </div>
-        <app-access-by-qr-code [event]="event"/>
+        <app-access-by-qr-code [event]="event" />
     </section>
 </app-window>
