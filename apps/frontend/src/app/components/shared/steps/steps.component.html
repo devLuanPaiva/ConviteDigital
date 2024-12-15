@@ -1,0 +1,75 @@
+<section class="flex-1 flex flex-col gap-10 w-full">
+    <nav class="self-center">
+      <div class="flex gap-4 select-none">
+        <div *ngFor="let step of renderLabels()" class="flex items-center gap-2">
+          <span
+            class="flex items-center justify-center w-9 h-9 rounded-full"
+            [ngClass]="{
+              'bg-white text-black': step.selected,
+              'bg-zinc-700 text-zinc-400': !step.selected
+            }"
+          >
+            {{ step.index + 1 }}
+          </span>
+          <span [ngClass]="{ 'text-white': step.selected, 'text-zinc-600': !step.selected }">
+            {{ step.label }}
+          </span>
+        </div>
+      </div>
+    </nav>
+  
+    <main>
+      <ng-container *ngIf="currentStep === 0">
+        <ng-content select="[step0]"></ng-content>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 1">
+        <ng-content select="[step1]"></ng-content>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 2">
+        <ng-content select="[step2]"></ng-content>
+      </ng-container>
+    </main>
+    
+  
+    <footer class="flex justify-between">
+      <button
+        (click)="previousStep()"
+        class="button"
+        [ngClass]="{
+          'bg-zinc-400 cursor-not-allowed opacity-50': noPreviousStep(),
+          'bg-zinc-700 hover:bg-zinc-600 text-white': !noPreviousStep()
+        }"
+        [disabled]="noPreviousStep()"
+      >
+        <span>Anterior</span>
+      </button>
+  
+      <button
+        *ngIf="noNextStep(); else next"
+        (click)="action.emit()"
+        class="button"
+        [ngClass]="{
+          'bg-zinc-400 cursor-not-allowed opacity-50': !getNextStep,
+          'bg-green-700 hover:bg-green-600 text-white': getNextStep
+        }"
+        [disabled]="!getNextStep"
+      >
+        <span>{{ actionLabel }}</span>
+      </button>
+  
+      <ng-template #next>
+        <button
+          (click)="nextStep()"
+          class="button"
+          [ngClass]="{
+            'bg-zinc-400 cursor-not-allowed opacity-50': !getNextStep || noNextStep(),
+            'bg-green-700 hover:bg-green-600 text-white': getNextStep && !noNextStep()
+          }"
+          [disabled]="!getNextStep || noNextStep()"
+        >
+          <span>Próximo</span>
+        </button>
+      </ng-template>
+    </footer>
+  </section>
+  
