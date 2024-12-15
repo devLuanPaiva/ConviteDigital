@@ -4,7 +4,7 @@
         [actionLabel]="'Salvar'"
         [labels]="labels"
         [allowNextStep]="allowNextStep">
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-5" step0>
             <app-input
                 [label]="'Identificador'"
                 [description]="'Identificador único e exclusivo para o evento (usado na URL)'"
@@ -18,7 +18,7 @@
                 (valueChange)="toggleEvent('name', $event)" />
         </div>
 
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5" step1>
             <app-input
                 [label]="'Data'"
                 [description]="'Data e hora em que o evento ocorrerá'"
@@ -32,7 +32,7 @@
                 (valueChange)="toggleEvent('location', $event)" />
         </div>
 
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5" step2>
             <app-input
                 [label]="'Descrição'"
                 [description]="'Descrição do evento (Só entra se trouxer presente!)'"
