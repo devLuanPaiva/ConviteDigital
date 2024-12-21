@@ -29,7 +29,9 @@ export class SuccessComponent implements OnInit {
   constructor(private readonly eventService: EventService) {}
 
   ngOnInit(): void {
-    this.eventService.event$.subscribe((event) => (this.event = event));
+    this.eventService.event$.subscribe((event) => {
+      this.event = event;
+    });
     this.currentURL = window.location.origin;
   }
 }
