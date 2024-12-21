@@ -14,8 +14,7 @@ export class EventInformationComponent {
   @Input() classNameProps?: string;
 
   get formattedDate(): string {
-    return this.event.date
-      ? `${new Date(this.event.date).toLocaleDateString()} às ${new Date(this.event.date).toLocaleTimeString()}`
+    return this.event.date ? `${new Date(this.event.date).toLocaleDateString()} às ${new Date(this.event.date).toLocaleTimeString()}`
       : 'Data não disponível';
   }
 }
