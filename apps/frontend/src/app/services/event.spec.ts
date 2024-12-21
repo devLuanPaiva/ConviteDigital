@@ -41,4 +41,15 @@ describe('EventService', () => {
       expect(guest).toEqual(mockGuest);
     });
   });
+  it('should handle save event errors', async () => {
+    apiServiceMock.httpPost.and.returnValue(
+      throwError(() => new Error('API error')),
+    );
+
+    spyOn(console, 'error');
+
+    await service.saveEvent();
+
+    expect(console.error).toHaveBeenCalledWith('API error');
+  });
 });
