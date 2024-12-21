@@ -43,15 +43,19 @@ export class EventService {
       const eventSaved: Event = await firstValueFrom(
         this.apiService.httpPost('events', currentEvent),
       );
-      this.route.navigate(['event/success']);
-      this.eventSubject.next({
+
+      const updatedEvent = {
+        ...currentEvent,
         ...eventSaved,
         date: DateFormatter.unformat(eventSaved.date.toString()),
-      });
+      };
+      this.eventSubject.next(updatedEvent);
+      this.route.navigate(['event/success']);
     } catch (error: any) {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }
   }
+
   async loadEvent(idOrAlias: string): Promise<void> {
     try {
       const event: Event = await firstValueFrom(
