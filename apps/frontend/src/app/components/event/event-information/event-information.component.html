@@ -1,19 +1,20 @@
-<section class="flex flex-col gap-2"
-    [className]="classNameProps ? classNameProps : ''">
-    <div *ngIf="!hideName"
-        class="flex-1 flex items-center gap-4 border border-zinc-800 px-6 py-3 rounded-lg">
-        <h2 class="text-2xl font-black">{{event!.alias}} </h2>
-        <h3 class="text-xl text-zinc-300">{{event!.name}}</h3>
+<section class="flex flex-col gap-2" [className]="classNameProps ? classNameProps : ''">
+    <div *ngIf="!hideName" class="flex-1 flex items-center gap-4 border border-zinc-800 px-6 py-3 rounded-lg">
+      <h2 class="text-2xl font-black">{{ event.alias || 'Alias não disponível' }}</h2>
+      <h3 class="text-xl text-zinc-300">{{ event.name || 'Nome não disponível' }}</h3>
     </div>
+  
     <div class="flex gap-2">
-        <app-information [label]="'Data:'">
-            <span> {{ formattedDate }} </span>
-        </app-information>
-        <app-information [label]="'Local:'">
-            {{event.location}}
-        </app-information>
+      <app-information [label]="'Data: '">
+        {{ formattedDate }}
+      </app-information>
+      <app-information [label]="'Local: '">
+        {{ event.location?.trim() || 'Local não disponível' }}
+      </app-information>
     </div>
-    <app-information [label]="'Descrição:'">
-        {{event!.description}}
+  
+    <app-information [label]="'Descrição: '">
+      {{ event.description || 'Descrição não disponível' }}
     </app-information>
-</section>
+  </section>
+  
