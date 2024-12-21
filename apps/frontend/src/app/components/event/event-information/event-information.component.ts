@@ -12,9 +12,13 @@ export class EventInformationComponent {
   @Input() event: Partial<Event> = {};
   @Input() hideName?: boolean;
   @Input() classNameProps?: string;
-
   get formattedDate(): string {
-    return this.event.date ? `${new Date(this.event.date).toLocaleDateString()} às ${new Date(this.event.date).toLocaleTimeString()}`
+    return this.event?.date
+      ? new Date(this.event.date).toLocaleString('pt-BR', {
+          dateStyle: 'long',
+          timeStyle: 'short',
+        })
       : 'Data não disponível';
   }
+  
 }
