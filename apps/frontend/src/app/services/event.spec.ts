@@ -33,4 +33,12 @@ describe('EventService', () => {
       expect(event).toEqual(mockEvent);
     });
   });
+  it('should toggle guest', () => {
+    const mockGuest = { id: '1', name: 'Test Guest' } as Partial<Guest>;
+    service.toggleGuest(mockGuest);
+
+    service.guest$.subscribe((guest) => {
+      expect(guest).toEqual(mockGuest);
+    });
+  });
 });
