@@ -63,4 +63,8 @@ describe('FormEventComponent', () => {
     expect(component['isAliasValid']('   ')).toBe(false);
     expect(component['isAliasValid']('valid-alias')).toBe(true);
   });
+  it('should update event state when toggleEvent is called', () => {
+    component.toggleEvent('alias', 'new-alias');
+    expect(eventService.event$).toBeTruthy();
+  });
 });
