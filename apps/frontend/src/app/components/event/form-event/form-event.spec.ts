@@ -43,3 +43,24 @@ describe('EventComponent', () => {
     expect(component.event).toEqual(mockEvent);
   });
 });
+describe('FormEventComponent', () => {
+  let component: FormEventComponent;
+  let fixture: ComponentFixture<FormEventComponent>;
+  let eventService: MockEventService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FormEventComponent],
+      providers: [{ provide: EventService, useClass: MockEventService }],
+    });
+
+    fixture = TestBed.createComponent(FormEventComponent);
+    component = fixture.componentInstance;
+    eventService = TestBed.inject(EventService) as unknown as MockEventService;
+  });
+  it('should validate alias correctly', () => {
+    expect(component['isAliasValid']('')).toBe(false);
+    expect(component['isAliasValid']('   ')).toBe(false);
+    expect(component['isAliasValid']('valid-alias')).toBe(true);
+  });
+});
