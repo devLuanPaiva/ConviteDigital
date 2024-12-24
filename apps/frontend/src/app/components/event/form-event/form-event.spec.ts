@@ -6,8 +6,9 @@ import { of } from 'rxjs';
 
 class MockEventService {
   private eventSubject = { alias: '' };
-  event$ = of(this.eventSubject);
-
+  event$() {
+    return of(this.eventSubject);
+  }
   toggleEvent(key: string, value: any) {
     this.eventSubject[key as keyof typeof this.eventSubject] = value;
   }
@@ -31,5 +32,14 @@ describe('EventComponent', () => {
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+  it('should subscribe to eventService and update event on initialization', () => {
+    const mockEvent = { alias: 'test-event' };
+    (eventService.event$ as any) = of(mockEvent);
+
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    expect(component.event).toEqual(mockEvent);
   });
 });
