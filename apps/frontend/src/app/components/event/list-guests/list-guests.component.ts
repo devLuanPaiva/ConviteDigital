@@ -8,6 +8,6 @@ import { ItemGuestComponent } from '../item-guest/item-guest.component';
   imports: [CommonModule, ItemGuestComponent],
   templateUrl: './list-guests.component.html',
 })
-export class ListGuestComponent {
+export class ListGuestsComponent {
   @Input() guests: Guest[] = [];
 }
