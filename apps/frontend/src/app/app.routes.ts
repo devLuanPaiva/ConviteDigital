@@ -12,9 +12,10 @@ export const routes: Routes = [
       import('./pages/success/success.module').then((m) => m.SuccessModule),
   },
   {
-    path: 'event/admin',
+    path: 'event/admin/:id',
     loadChildren: () =>
       import('./pages/admin/admin.module').then((m) => m.AdminModule),
+    
   },
 ];
 
