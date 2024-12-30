@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
+    const id = this.route.snapshot.paramMap.get('id');
     this.password = this.route.snapshot.paramMap.get('password') || '';
 
     this.loadEvent(id, this.password);
