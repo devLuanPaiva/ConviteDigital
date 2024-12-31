@@ -1,0 +1,5 @@
+<section class="flex flex-col gap-2">
+    @for (guest of guests; track guest.id) {
+    <app-item-guest [guest]="guest" />
+    }
+</section>
