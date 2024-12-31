@@ -5,12 +5,12 @@
             [presents]="presents"
             [absent]="absents"
             [total]="totalGuests"
-            (updateGuestList)="updateGuestList()"></app-dashboard-event>
+            (updateGuestList)="loadEvent(event.id, password)"></app-dashboard-event>
     </ng-container>
     <ng-template #passwordForm>
         <app-event-password-form
             [password]="password"
-            (accessEvent)="loadEvent(event?.id, password)"
+            (accessEvent)="loadEvent(event.id, password)"
             (changePassword)="password = $event"></app-event-password-form>
     </ng-template>
 </div>
