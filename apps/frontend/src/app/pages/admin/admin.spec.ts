@@ -41,7 +41,11 @@ describe('AdminComponent', () => {
     apiServiceSpy = jasmine.createSpyObj('ApiService', ['httpPost']);
 
     await TestBed.configureTestingModule({
-      imports: [AdminComponent, DashboardEventComponent, EventPasswordFormComponent],
+      imports: [
+        AdminComponent,
+        DashboardEventComponent,
+        EventPasswordFormComponent,
+      ],
       providers: [
         { provide: ActivatedRoute, useValue: mockRoute },
         { provide: ApiService, useValue: apiServiceSpy },
@@ -68,5 +72,10 @@ describe('AdminComponent', () => {
     expect(component.presents.length).toBe(1);
     expect(component.absents.length).toBe(1);
     expect(component.totalGuests).toBe(3);
+  });
+  it('should render the dashboard when event is available', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('app-dashboard-event')).toBeTruthy();
+    expect(compiled.querySelector('app-event-password-form')).toBeFalsy();
   });
 });
