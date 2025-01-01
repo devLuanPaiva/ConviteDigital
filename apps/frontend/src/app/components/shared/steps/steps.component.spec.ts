@@ -71,11 +71,20 @@ describe('StepsComponent', () => {
   it('should not allow next step if allowNextStep is false for the current step', () => {
     component.labels = ['Step 1', 'Step 2', 'Step 3'];
     component.allowNextStep = [true, false, true];
-    component.currentStep = 1; 
+    component.currentStep = 1;
     fixture.detectChanges();
     const nextButton: DebugElement = fixture.debugElement.query(
       By.css('button.bg-zinc-400'),
     );
     expect(nextButton.nativeElement.disabled).toBe(true);
+  });
+  it('should correctly update the step index on next/previous step navigation', () => {
+    component.labels = ['Step 1', 'Step 2', 'Step 3'];
+    component.currentStep = 0;
+    fixture.detectChanges();
+    component.nextStep();
+    expect(component.currentStep).toBe(1);
+    component.previousStep();
+    expect(component.currentStep).toBe(0);
   });
 });
