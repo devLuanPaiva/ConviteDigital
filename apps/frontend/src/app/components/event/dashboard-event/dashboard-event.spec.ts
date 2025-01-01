@@ -30,22 +30,22 @@ describe('DashboardEventComponent', () => {
   };
   const mockPresents: Guest[] = [
     {
-        confirmed: true,
-        hasCompanions: false,
-        numberOfCompanions: 0,
-        id: '',
-        name: '',
-        email: ''
+      confirmed: true,
+      hasCompanions: false,
+      numberOfCompanions: 0,
+      id: '',
+      name: '',
+      email: '',
     },
   ];
   const mockAbsents: Guest[] = [
     {
-        confirmed: false,
-        hasCompanions: false,
-        numberOfCompanions: 0,
-        id: '',
-        name: '',
-        email: ''
+      confirmed: false,
+      hasCompanions: false,
+      numberOfCompanions: 0,
+      id: '',
+      name: '',
+      email: '',
     },
   ];
   const mockTotal = 3;
@@ -74,5 +74,13 @@ describe('DashboardEventComponent', () => {
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+  it('should render subcomponents with correct inputs', () => {
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('app-event-information')).toBeTruthy();
+    expect(compiled.querySelector('app-access-by-qr-code')).toBeTruthy();
+    expect(compiled.querySelectorAll('app-statistics').length).toBe(3);
+    expect(compiled.querySelectorAll('app-list-guests').length).toBe(2);
   });
 });
