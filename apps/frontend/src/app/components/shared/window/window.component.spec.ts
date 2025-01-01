@@ -23,4 +23,12 @@ describe('WindowComponent', () => {
     ).nativeElement;
     expect(imgElement.src).toContain('EVP_0141-scaled.jpg');
   });
+  it('should display input background image if provided', () => {
+    component.background = 'https://example.com/background.jpg';
+    fixture.detectChanges();
+    const imgElement = fixture.debugElement.query(
+      By.css('img[alt="background"]'),
+    ).nativeElement;
+    expect(imgElement.src).toContain('background.jpg');
+  });
 });
