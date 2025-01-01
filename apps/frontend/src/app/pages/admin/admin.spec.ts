@@ -64,4 +64,9 @@ describe('AdminComponent', () => {
       password: 'encoded-password',
     });
   });
+  it('should calculate presents, absents, and totalGuests correctly', () => {
+    expect(component.presents.length).toBe(1);
+    expect(component.absents.length).toBe(1);
+    expect(component.totalGuests).toBe(3);
+  });
 });
