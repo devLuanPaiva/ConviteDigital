@@ -78,4 +78,12 @@ describe('AdminComponent', () => {
     expect(compiled.querySelector('app-dashboard-event')).toBeTruthy();
     expect(compiled.querySelector('app-event-password-form')).toBeFalsy();
   });
+  it('should render the password form when event is null', () => {
+    component.event = null;
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('app-dashboard-event')).toBeFalsy();
+    expect(compiled.querySelector('app-event-password-form')).toBeTruthy();
+  });
 });
