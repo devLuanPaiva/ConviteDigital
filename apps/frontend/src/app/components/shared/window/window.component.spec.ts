@@ -31,4 +31,13 @@ describe('WindowComponent', () => {
     ).nativeElement;
     expect(imgElement.src).toContain('background.jpg');
   });
+  it('should display default event image if no input image is provided', () => {
+    fixture.detectChanges();
+    const imgElement = fixture.debugElement.query(
+      By.css('img[alt="Event"]'),
+    ).nativeElement;
+    expect(imgElement.src).toContain(
+      '360_F_812701281_qDF1YDwHrQgs2BbUCIrgqzkdkNhokjwp.jpg',
+    );
+  });
 });
