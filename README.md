@@ -33,12 +33,14 @@ O sistema está sendo desenvolvido em um **monorepo** e utiliza as seguintes tec
 ### Testes:
 - **Jest**
 - **React Testing Library**
+- **Jasmine**
 
 ---
 
 ## ✅ Cobertura de Testes
 
-O **CONVIT3 DIGITAL** já possui mais de **60 testes aprovados**, garantindo a qualidade e confiabilidade das funcionalidades desenvolvidas.
+
+O **CONVIT3 DIGITAL** já possui mais de **66 testes aprovados**, garantindo a qualidade e confiabilidade das funcionalidades desenvolvidas.
 
 ---
 
