@@ -48,4 +48,10 @@ describe('WindowComponent', () => {
     ).nativeElement;
     expect(imgElement.src).toContain('event.jpg');
   });
+  it('should display default label if no input label is provided', () => {
+    fixture.detectChanges();
+    const labelText = fixture.debugElement.query(By.css('p.text-sm'))
+      .nativeElement.textContent;
+    expect(labelText).toBe(' Detalhes do Evento: ');
+  });
 });
