@@ -4,7 +4,8 @@ export default class Password {
       throw new Error("Tamanho da senha não pode ser negativo.");
     }
     const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-{}[]|\\:;\"'<>,.?/~`";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
     let password = "";
 
     for (let i = 0; i < size; i++) {

@@ -4,6 +4,7 @@
       "cors",
       "jasmine"
     ],
+    "strictNullChecks": false,
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

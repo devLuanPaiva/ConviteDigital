@@ -1,0 +1,30 @@
+<section class="flex flex-col gap-4">
+    <div class="flex flex-wrap gap-4 justify-between items-stretch">
+        <app-event-information [event]="event" [classNameProps]="'flex-1'" class="min-w-[16rem]" />
+        <app-access-by-qr-code [event]="event" class="min-w-[16rem]" />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        <app-statistics [text]="'Expectativa de Convidados:'" 
+            [value]="event.expectedAudience" 
+            [image]="'assets/icons/guests.svg'" />
+        <app-statistics [text]="'Confirmações:'" 
+            [value]="presents.length" 
+            [image]="'assets/icons/confirmed.svg'" />
+        <app-statistics [text]="'Total Confirmados:'" 
+            [value]="total" 
+            [image]="'assets/icons/companions.svg'" />
+    </div>
+
+    <button (click)="updateGuestList()" 
+        class="button blue self-end font-normal mt-12 w-full sm:w-auto">
+        Atualizar lista de convidados
+    </button>
+
+    <app-list-guests [guests]="presents" />
+
+    <h3 class="py-2 text-xl  text-white/80">
+        Convidados que confirmaram <strong>ausência</strong>
+    </h3>
+    <app-list-guests [guests]="absent" />
+</section>

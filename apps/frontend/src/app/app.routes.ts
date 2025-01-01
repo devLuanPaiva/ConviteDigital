@@ -11,6 +11,12 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/success/success.module').then((m) => m.SuccessModule),
   },
+  {
+    path: 'event/admin/:id/:password',
+    loadChildren: () =>
+      import('./pages/admin/admin.module').then((m) => m.AdminModule),
+    
+  },
 ];
 
 @NgModule({
