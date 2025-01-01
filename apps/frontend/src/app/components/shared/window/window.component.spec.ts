@@ -67,4 +67,11 @@ describe('WindowComponent', () => {
       .nativeElement.textContent;
     expect(titleText).toBe(' Título do Evento ');
   });
+  it('should display input title if provided', () => {
+    component.title = 'Evento Incrível';
+    fixture.detectChanges();
+    const titleText = fixture.debugElement.query(By.css('h1.text-4xl'))
+      .nativeElement.textContent;
+    expect(titleText).toBe(' Evento Incrível ');
+  });
 });
