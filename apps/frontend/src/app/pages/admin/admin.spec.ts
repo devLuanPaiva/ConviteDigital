@@ -57,4 +57,11 @@ describe('AdminComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+  it('should initialize with correct values from route parameters', () => {
+    expect(component.password).toBe('encoded-password');
+    expect(apiServiceSpy.httpPost).toHaveBeenCalledWith('events/access', {
+      id: '123',
+      password: 'encoded-password',
+    });
+  });
 });
