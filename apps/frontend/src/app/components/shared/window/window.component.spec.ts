@@ -40,4 +40,12 @@ describe('WindowComponent', () => {
       '360_F_812701281_qDF1YDwHrQgs2BbUCIrgqzkdkNhokjwp.jpg',
     );
   });
+  it('should display input event image if provided', () => {
+    component.image = 'https://example.com/event.jpg';
+    fixture.detectChanges();
+    const imgElement = fixture.debugElement.query(
+      By.css('img[alt="Event"]'),
+    ).nativeElement;
+    expect(imgElement.src).toContain('event.jpg');
+  });
 });
