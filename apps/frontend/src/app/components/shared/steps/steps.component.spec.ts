@@ -62,8 +62,20 @@ describe('StepsComponent', () => {
     component.labels = ['Step 1', 'Step 2', 'Step 3'];
     component.currentStep = 2;
     fixture.detectChanges();
-    const actionButton: DebugElement = fixture.debugElement.query(By.css('button.bg-green-700'));
+    const actionButton: DebugElement = fixture.debugElement.query(
+      By.css('button.bg-green-700'),
+    );
     actionButton.triggerEventHandler('click', null);
     expect(actionSpy).toHaveBeenCalled();
+  });
+  it('should not allow next step if allowNextStep is false for the current step', () => {
+    component.labels = ['Step 1', 'Step 2', 'Step 3'];
+    component.allowNextStep = [true, false, true];
+    component.currentStep = 1; 
+    fixture.detectChanges();
+    const nextButton: DebugElement = fixture.debugElement.query(
+      By.css('button.bg-zinc-400'),
+    );
+    expect(nextButton.nativeElement.disabled).toBe(true);
   });
 });
