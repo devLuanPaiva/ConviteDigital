@@ -26,4 +26,14 @@ describe('StepsComponent', () => {
     );
     expect(stepElements.length).toBe(3);
   });
+  it('should display correct step labels', () => {
+    component.labels = ['Step 1', 'Step 2', 'Step 3'];
+    fixture.detectChanges();
+    const stepLabelElements = fixture.debugElement.queryAll(
+      By.css('span.text-zinc-600'),
+    );
+    expect(stepLabelElements[1].nativeElement.textContent).toBe(' Step 1 ');
+    expect(stepLabelElements[2].nativeElement.textContent).toBe(' Step 2 ');
+    expect(stepLabelElements[3].nativeElement.textContent).toBe(' Step 3 ');
+  });
 });
