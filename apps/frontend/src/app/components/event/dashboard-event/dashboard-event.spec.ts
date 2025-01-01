@@ -83,4 +83,10 @@ describe('DashboardEventComponent', () => {
     expect(compiled.querySelectorAll('app-statistics').length).toBe(3);
     expect(compiled.querySelectorAll('app-list-guests').length).toBe(2);
   });
+  it('should render statistics correctly', () => {
+    const statistics = fixture.nativeElement.querySelectorAll('app-statistics');
+    expect(statistics[0].textContent).toContain('Expectativa de Convidados:');
+    expect(statistics[1].textContent).toContain('Confirmações:');
+    expect(statistics[2].textContent).toContain('Total Confirmados:');
+  });
 });
