@@ -61,4 +61,10 @@ describe('WindowComponent', () => {
       .nativeElement.textContent;
     expect(labelText).toBe(' Evento Especial ');
   });
+  it('should display default title if no input title is provided', () => {
+    fixture.detectChanges();
+    const titleText = fixture.debugElement.query(By.css('h1.text-4xl'))
+      .nativeElement.textContent;
+    expect(titleText).toBe(' Título do Evento ');
+  });
 });
