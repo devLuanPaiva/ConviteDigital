@@ -86,4 +86,9 @@ describe('AdminComponent', () => {
     expect(compiled.querySelector('app-dashboard-event')).toBeFalsy();
     expect(compiled.querySelector('app-event-password-form')).toBeTruthy();
   });
+  it('should unsubscribe from subscriptions on destroy', () => {
+    spyOn(component.subscriptions, 'unsubscribe');
+    component.ngOnDestroy();
+    expect(component.subscriptions.unsubscribe).toHaveBeenCalled();
+  });
 });
