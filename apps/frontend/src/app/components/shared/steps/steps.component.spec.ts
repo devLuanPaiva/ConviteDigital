@@ -58,4 +58,12 @@ describe('StepsComponent', () => {
     nextButton.triggerEventHandler('click', null);
     expect(component.currentStep).toBe(1);
   });
+  it('should emit action event when clicking on "Action" button', () => {
+    component.labels = ['Step 1', 'Step 2', 'Step 3'];
+    component.currentStep = 2;
+    fixture.detectChanges();
+    const actionButton: DebugElement = fixture.debugElement.query(By.css('button.bg-green-700'));
+    actionButton.triggerEventHandler('click', null);
+    expect(actionSpy).toHaveBeenCalled();
+  });
 });
