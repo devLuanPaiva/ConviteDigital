@@ -89,4 +89,10 @@ describe('DashboardEventComponent', () => {
     expect(statistics[1].textContent).toContain('Confirmações:');
     expect(statistics[2].textContent).toContain('Total Confirmados:');
   });
+  it('should call updateGuestList on button click', () => {
+    const button = fixture.nativeElement.querySelector('button');
+    button.click();
+
+    expect(component.updateGuestList).toHaveBeenCalled();
+  });
 });
