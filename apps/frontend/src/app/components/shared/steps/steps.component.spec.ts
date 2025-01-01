@@ -48,4 +48,14 @@ describe('StepsComponent', () => {
     );
     expect(previousButton.nativeElement.disabled).toBe(true);
   });
+  it('should call nextStep() when clicking "Next" button', () => {
+    component.labels = ['Step 1', 'Step 2', 'Step 3'];
+    component.currentStep = 0;
+    fixture.detectChanges();
+    const nextButton: DebugElement = fixture.debugElement.query(
+      By.css('button.bg-green-700'),
+    );
+    nextButton.triggerEventHandler('click', null);
+    expect(component.currentStep).toBe(1);
+  });
 });
