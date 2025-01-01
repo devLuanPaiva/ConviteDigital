@@ -54,4 +54,11 @@ describe('WindowComponent', () => {
       .nativeElement.textContent;
     expect(labelText).toBe(' Detalhes do Evento: ');
   });
+  it('should display input label if provided', () => {
+    component.label = 'Evento Especial';
+    fixture.detectChanges();
+    const labelText = fixture.debugElement.query(By.css('p.text-sm'))
+      .nativeElement.textContent;
+    expect(labelText).toBe(' Evento Especial ');
+  });
 });
