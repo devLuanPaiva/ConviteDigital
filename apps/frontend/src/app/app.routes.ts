@@ -15,7 +15,13 @@ export const routes: Routes = [
     path: 'event/admin/:id/:password',
     loadChildren: () =>
       import('./pages/admin/admin.module').then((m) => m.AdminModule),
-    
+  },
+  {
+    path: 'event/invitation/:alias',
+    loadChildren: () =>
+      import('./pages/invitation/invitation.module').then(
+        (m) => m.InvitationModule,
+      ),
   },
 ];
 
