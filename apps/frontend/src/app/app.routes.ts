@@ -2,22 +2,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 export const routes: Routes = [
   {
-    path: 'event',
+    path: 'evento',
     loadChildren: () =>
       import('./pages/event/event.module').then((m) => m.EventModule),
   },
   {
-    path: 'event/success',
+    path: 'evento/sucesso',
     loadChildren: () =>
       import('./pages/success/success.module').then((m) => m.SuccessModule),
   },
   {
-    path: 'event/admin/:id/:password',
+    path: 'evento/admin/:id/:password',
     loadChildren: () =>
       import('./pages/admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: 'event/invitation/:alias',
+    path: 'evento/convite/:alias',
     loadChildren: () =>
       import('./pages/invitation/invitation.module').then(
         (m) => m.InvitationModule,
