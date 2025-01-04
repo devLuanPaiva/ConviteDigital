@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 import {
   Event,
   Guest,
@@ -56,19 +56,15 @@ export class EventService {
     }
   }
 
-  async loadEvent(idOrAlias: string): Promise<void> {
-    try {
-      const event: Event = await firstValueFrom(
-        this.apiService.httpGet(`events/${idOrAlias}`),
-      );
-      this.eventSubject.next({
+  loadEvent(idOrAlias: string): Observable<Event> {
+    return this.apiService.httpGet(`events/${idOrAlias}`).pipe(
+      map((event: Event) => ({
         ...event,
         date: DateFormatter.unformat(event.date.toString()),
-      });
-    } catch (error: any) {
-      console.error(error.message || 'Ocorreu um erro inesperado!');
-    }
+      }))
+    );
   }
+  
   async addGuest(): Promise<void> {
     try {
       const currentEvent = this.eventSubject.getValue();
