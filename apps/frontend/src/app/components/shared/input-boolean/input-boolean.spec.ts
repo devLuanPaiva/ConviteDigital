@@ -24,4 +24,11 @@ describe('InputBooleanComponent', () => {
     expect(labelElement).toBeTruthy();
     expect(labelElement.nativeElement.textContent).toBe('Test Label');
   });
+  it('should not display label when label input is not provided', () => {
+    component.label = undefined;
+    fixture.detectChanges();
+
+    const labelElement = fixture.debugElement.query(By.css('label'));
+    expect(labelElement).toBeFalsy();
+  });
 });
