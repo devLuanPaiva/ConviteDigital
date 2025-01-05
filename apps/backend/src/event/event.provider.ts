@@ -15,13 +15,16 @@ export class EventProvider {
   saveGuest(event: Event, guest: Guest) {
     return this.prisma.guest.create({
       data: {
-        ...guest,
         guestName: guest.name,
         numberOfCompanions: +(guest.numberOfCompanions ?? 0),
+        confirmed: guest.confirmed,
+        email: guest.email,
+        hasCompanions: guest.hasCompanions,
         event: { connect: { id: event.id } },
       },
     });
   }
+
   async searchAll(): Promise<Event[]> {
     return this.prisma.event.findMany() as any;
   }

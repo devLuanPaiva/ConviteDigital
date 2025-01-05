@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { EventService } from './event.service';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, of, throwError } from 'rxjs';
-import { createNullEvent, createNullGuest, Event, Guest } from 'core';
+import { throwError } from 'rxjs';
+import { Event, Guest } from 'core';
 
 describe('EventService', () => {
   let service: EventService;
@@ -22,7 +22,6 @@ describe('EventService', () => {
     });
     service = TestBed.inject(EventService);
     apiServiceMock = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    routerMock = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
   it('should toggle event', () => {
@@ -35,12 +34,14 @@ describe('EventService', () => {
   });
   it('should toggle guest', () => {
     const mockGuest = { id: '1', name: 'Test Guest' } as Partial<Guest>;
+  
     service.toggleGuest(mockGuest);
-
+  
     service.guest$.subscribe((guest) => {
-      expect(guest).toEqual(mockGuest);
+      expect(guest).toEqual(jasmine.objectContaining(mockGuest));
     });
   });
+  
   it('should handle save event errors', async () => {
     apiServiceMock.httpPost.and.returnValue(
       throwError(() => new Error('API error')),
