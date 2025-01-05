@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InvitationComponent } from './invitation.component';
 import { ActivatedRoute } from '@angular/router';
-import { of, throwError } from 'rxjs';
 import { EventService } from '../../services/event.service';
 import { WindowComponent } from '../../components/shared/window/window.component';
 import { EventInformationComponent } from '../../components/event/event-information/event-information.component';
@@ -104,5 +103,12 @@ describe('InvitationComponent', () => {
     component.addGuest();
 
     expect(mockEventService.addGuest).toHaveBeenCalled();
+  });
+  it('should unsubscribe subscriptions on destroy', () => {
+    const spy = spyOn(component.subscriptions, 'unsubscribe');
+
+    component.ngOnDestroy();
+
+    expect(spy).toHaveBeenCalled();
   });
 });
