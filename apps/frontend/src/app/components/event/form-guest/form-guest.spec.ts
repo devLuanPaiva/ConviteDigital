@@ -39,4 +39,21 @@ describe('FormGuestComponent', () => {
       email: 'updated@example.com',
     });
   });
+  it('should update guest name when the input changes', () => {
+    spyOn(component.guestChanged, 'emit');
+    component.guest = { name: '' };
+
+    fixture.detectChanges();
+    const nameInput = fixture.debugElement.query(
+      By.css('app-input[label="Nome"] input'),
+    );
+    nameInput.nativeElement.value = 'New Name';
+    nameInput.nativeElement.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    expect(component.guest.name).toBe('New Name');
+    expect(component.guestChanged.emit).toHaveBeenCalledWith({
+      name: 'New Name',
+    });
+  });
 });
