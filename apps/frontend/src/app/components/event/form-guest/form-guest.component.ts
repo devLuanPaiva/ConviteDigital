@@ -13,6 +13,8 @@ export class FormGuestComponent {
   @Input() guest: Partial<Guest>;
   @Output() guestChanged = new EventEmitter<Partial<Guest>>();
   onGuestChange(changes: Partial<Guest>): void {
-    this.guestChanged.emit({ ...this.guest, ...changes });
+    const updatedGuest = { ...this.guest, ...changes };
+    this.guest = updatedGuest;
+    this.guestChanged.emit(updatedGuest);
   }
 }
