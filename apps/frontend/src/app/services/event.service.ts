@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
 import {
   Event,
   Guest,
@@ -34,7 +34,9 @@ export class EventService {
     this.eventSubject.next(event);
   }
   toggleGuest(guest: Partial<Guest>): void {
-    this.guestSubject.next(guest);
+    const currentGuest = this.guestSubject.getValue();
+    const updatedGuest = { ...currentGuest, ...guest };
+    this.guestSubject.next(updatedGuest);
   }
 
   async saveEvent(): Promise<void> {
@@ -56,19 +58,21 @@ export class EventService {
     }
   }
 
-  async loadEvent(idOrAlias: string): Promise<void> {
-    try {
-      const event: Event = await firstValueFrom(
-        this.apiService.httpGet(`events/${idOrAlias}`),
-      );
-      this.eventSubject.next({
-        ...event,
-        date: DateFormatter.unformat(event.date.toString()),
-      });
-    } catch (error: any) {
-      console.error(error.message || 'Ocorreu um erro inesperado!');
-    }
+  async loadEvent(idOrAlias: string): Promise<Event> {
+    const event = await firstValueFrom(
+      this.apiService.httpGet(`events/${idOrAlias}`).pipe(
+        map((event: Event) => ({
+          ...event,
+          date: DateFormatter.unformat(event.date.toString()),
+        })),
+      ),
+    );
+
+    this.toggleEvent(event);
+
+    return event;
   }
+
   async addGuest(): Promise<void> {
     try {
       const currentEvent = this.eventSubject.getValue();
@@ -79,7 +83,7 @@ export class EventService {
           currentGuest,
         ),
       );
-      this.route.navigate(['/invitation/mandatory']);
+      this.route.navigate(['/evento/agradecimento']);
     } catch (error: any) {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }

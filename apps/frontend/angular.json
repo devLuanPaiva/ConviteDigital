@@ -19,6 +19,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "./",
+            "deployUrl": "./",
             "allowedCommonJsDependencies": [
               "qrcode"
             ],

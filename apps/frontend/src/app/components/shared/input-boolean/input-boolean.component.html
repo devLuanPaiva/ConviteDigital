@@ -1,0 +1,17 @@
+<form class="flex flex-col gap-2" [ngClass]="className">
+    <label *ngIf="label" class="text-lg font-black">{{ label }}</label>
+    <div class="w-56 flex justify-start h-10 rounded-md bg-zinc-900 p-1">
+        <button
+            class="flex-1 flex items-center justify-center rounded-md cursor-pointer"
+            [ngClass]="value === true ? 'bg-black font-bold' : 'text-zinc-400'"
+            (click)="onItemClick(true)">
+            Sim
+        </button>
+        <button
+            class="flex-1 flex items-center justify-center rounded-md cursor-pointer"
+            [ngClass]="value === false ? 'bg-black font-bold' : 'text-zinc-400'"
+            (click)="onItemClick(false)">
+            Não
+        </button>
+    </div>
+</form>
