@@ -94,4 +94,11 @@ describe('InvitationComponent', () => {
     expect(component.event).toBeNull();
     expect(component.guest).toBeNull();
   });
+  it('should toggle guest when changeGuest is called', () => {
+    const guest: Partial<Guest> = { id: '4423423', name: 'Guest 1' };
+    component.changeGuest(guest);
+
+    expect(mockEventService.toggleGuest).toHaveBeenCalledWith(guest);
+  });
+
 });
