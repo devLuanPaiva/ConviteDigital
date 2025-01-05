@@ -31,4 +31,11 @@ describe('InputBooleanComponent', () => {
     const labelElement = fixture.debugElement.query(By.css('label'));
     expect(labelElement).toBeFalsy();
   });
+  it('should emit true when "Sim" button is clicked', () => {
+    spyOn(component.valueChange, 'emit');
+    const simButton = fixture.debugElement.query(By.css('button:first-child'));
+    simButton.triggerEventHandler('click', new MouseEvent('click'));
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith(true);
+  });
 });
