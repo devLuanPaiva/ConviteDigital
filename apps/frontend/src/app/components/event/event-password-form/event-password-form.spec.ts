@@ -32,4 +32,11 @@ describe('EventPasswordFormComponent', () => {
 
     expect(component.changePassword.emit).toHaveBeenCalledWith('newPassword');
   });
+  it('should emit accessEvent when Acessar Evento button is clicked', () => {
+    spyOn(component.accessEvent, 'emit');
+    const accessButton = fixture.debugElement.query(By.css('button'));
+    accessButton.triggerEventHandler('click', null);
+
+    expect(component.accessEvent.emit).toHaveBeenCalled();
+  });
 });
