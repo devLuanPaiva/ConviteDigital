@@ -12,7 +12,8 @@ export class InputBooleanComponent {
   @Input() className?: string;
   @Output() valueChange = new EventEmitter<boolean>();
 
-  onItemClick(valor: boolean): void {
+  onItemClick(valor: boolean, event: Event): void {
+    event.preventDefault()
     this.valueChange.emit(valor);
   }
 }
