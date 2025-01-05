@@ -43,4 +43,11 @@ describe('EventPasswordFormComponent', () => {
     component.onChangePassword('newPassword');
     expect(component.password).toBe('newPassword');
   });
+  it('should trigger onChangePassword with correct event value', () => {
+    spyOn(component, 'onChangePassword');
+    const inputElement = fixture.debugElement.query(By.css('app-input'));
+    inputElement.triggerEventHandler('valueChange', 'updatedPassword');
+
+    expect(component.onChangePassword).toHaveBeenCalledWith('updatedPassword');
+  });
 });
