@@ -24,4 +24,12 @@ describe('EventPasswordFormComponent', () => {
     const inputElement = fixture.debugElement.query(By.css('app-input input'));
     expect(inputElement.nativeElement.value).toBe('testPassword');
   });
+  it('should emit changePassword event when password is changed', () => {
+    spyOn(component.changePassword, 'emit');
+    const inputElement = fixture.debugElement.query(By.css('app-input input'));
+    inputElement.nativeElement.value = 'newPassword';
+    inputElement.nativeElement.dispatchEvent(new Event('input'));
+
+    expect(component.changePassword.emit).toHaveBeenCalledWith('newPassword');
+  });
 });
