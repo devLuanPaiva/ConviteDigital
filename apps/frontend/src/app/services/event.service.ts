@@ -83,7 +83,7 @@ export class EventService {
           currentGuest,
         ),
       );
-      this.route.navigate(['/invitation/mandatory']);
+      this.route.navigate(['/evento/agradecimento']);
     } catch (error: any) {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }
