@@ -38,4 +38,11 @@ describe('InputBooleanComponent', () => {
 
     expect(component.valueChange.emit).toHaveBeenCalledWith(true);
   });
+  it('should emit false when "Não" button is clicked', () => {
+    spyOn(component.valueChange, 'emit');
+    const naoButton = fixture.debugElement.query(By.css('button:last-child'));
+    naoButton.triggerEventHandler('click', new MouseEvent('click'));
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith(false);
+  });
 });
