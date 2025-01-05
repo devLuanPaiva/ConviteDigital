@@ -39,4 +39,8 @@ describe('EventPasswordFormComponent', () => {
 
     expect(component.accessEvent.emit).toHaveBeenCalled();
   });
+  it('should update password property when onChangePassword is called', () => {
+    component.onChangePassword('newPassword');
+    expect(component.password).toBe('newPassword');
+  });
 });
