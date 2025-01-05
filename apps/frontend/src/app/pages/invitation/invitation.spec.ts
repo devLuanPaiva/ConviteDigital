@@ -84,4 +84,14 @@ describe('InvitationComponent', () => {
     expect(mockRoute.snapshot.paramMap.get).toHaveBeenCalledWith('alias');
     expect(mockEventService.loadEvent).toHaveBeenCalledWith('sample-alias');
   });
+  it('should handle error if event loading fails', async () => {
+    spyOn(console, 'error');
+    mockEventService.loadEvent.and.returnValue(Promise.reject('Error loading event'));
+
+    await component.ngOnInit();
+
+    expect(console.error).toHaveBeenCalledWith('Erro ao carregar o evento:', 'Error loading event');
+    expect(component.event).toBeNull();
+    expect(component.guest).toBeNull();
+  });
 });
