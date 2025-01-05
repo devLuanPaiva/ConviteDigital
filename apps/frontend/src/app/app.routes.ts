@@ -23,6 +23,13 @@ export const routes: Routes = [
         (m) => m.InvitationModule,
       ),
   },
+  {
+    path: 'evento/agradecimento',
+    loadChildren: () =>
+      import('./pages/thank-page/thank-page.module').then(
+        (m) => m.ThankPageModule,
+      ),
+  },
 ];
 
 @NgModule({
