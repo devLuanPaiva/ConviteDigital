@@ -52,7 +52,7 @@ export class EventService {
         date: DateFormatter.unformat(eventSaved.date.toString()),
       };
       this.eventSubject.next(updatedEvent);
-      this.route.navigate(['event/success']);
+      this.route.navigate(['evento/sucesso']);
     } catch (error: any) {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }
