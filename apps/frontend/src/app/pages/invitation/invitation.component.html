@@ -1,19 +1,29 @@
-@if (event.alias) {
-<app-window [label]="'Você foi convidado para: '" [title]="event.name"
-    [image]="event.image" [background]="event.backgroundImage">
-    <app-event-information [event]="event" [hideName]="true" />
-    <section class="flex flex-col gap-4 pt-10">
-        <h2 class="text-xl font-bold">Insira seus dados</h2>
-        <div class="border-t border-zinc-800"></div>
-        <app-form-guest [guest]="guest" (guestChanged)="changeGuest(guest)" />
-        <button
-            [ngClass]=" {'green': guest.confirmed, 'red': !guest.confirmed}"
-            class="button self-center"
-            (click)="addGuest()">
-            Confirmar {{guest.confirmed ? 'Presença' : 'Ausência'}}
-        </button>
-    </section>
-</app-window>
-}@else {
-<app-loading />
-}
+<ng-container *ngIf="event; else loading">
+    <app-window
+        [label]="'Você foi convidado para: '"
+        [title]="event?.name"
+        [image]="event?.image"
+        [background]="event?.backgroundImage">
+
+        <app-event-information [event]="event"
+            [hideName]="true"></app-event-information>
+
+        <section class="flex flex-col gap-4 pt-10">
+            <h2 class="text-xl font-bold">Insira seus dados</h2>
+            <div class="border-t border-zinc-800"></div>
+            <app-form-guest [guest]="guest"
+                (guestChanged)="changeGuest($event)"/>
+
+            <button
+                [ngClass]="{'green': guest?.confirmed, 'red': !guest?.confirmed}"
+                class="button self-center"
+                (click)="addGuest()">
+                Confirmar {{guest?.confirmed ? 'Presença' : 'Ausência'}}
+            </button>
+        </section>
+    </app-window>
+</ng-container>
+
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>

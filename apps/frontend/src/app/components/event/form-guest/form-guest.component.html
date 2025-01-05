@@ -1,30 +1,30 @@
 <div class="flex flex-col gap-5">
     <app-input
         label="Nome"
-        [value]="guest.name || ''"
-        (valueChange)="onGuestChange({ name: $event!.toString()})" />
+        [value]="guest?.name || ''"
+        (valueChange)="onGuestChange({ name: $event!.toString() })" />
     <app-input
         label="Email"
-        [value]="guest.email || ''"
+        [value]="guest?.email || ''"
         (valueChange)="onGuestChange({ email: $event!.toString() })" />
     <div class="flex gap-5">
         <app-input-boolean
             label="Presença Confirmada?"
-            [value]="guest.confirmed ?? true"
+            [value]="guest?.confirmed ?? true"
             (valueChange)="onGuestChange({ confirmed: $event })" />
-        <div *ngIf="guest.confirmed" class="flex-1 flex gap-5">
+        <div *ngIf="guest?.confirmed" class="flex-1 flex gap-5">
             <app-input-boolean
                 label="Possui Acompanhantes?"
-                [value]="guest.hasCompanions ?? false"
+                [value]="guest?.hasCompanions ?? false"
                 (valueChange)="onGuestChange({
             hasCompanions: $event,
             numberOfCompanions: $event ? 1 : 0,
           })" />
             <app-input
-                *ngIf="guest.hasCompanions"
+                *ngIf="guest?.hasCompanions"
                 label="Quantos Acompanhantes?"
                 [type]="'number'"
-                [value]="guest.numberOfCompanions || 1"
+                [value]="guest?.numberOfCompanions || 1"
                 (valueChange)="onGuestChange({
             numberOfCompanions: +$event,
           })" />
