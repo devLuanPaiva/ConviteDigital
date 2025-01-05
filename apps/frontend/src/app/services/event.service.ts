@@ -34,7 +34,9 @@ export class EventService {
     this.eventSubject.next(event);
   }
   toggleGuest(guest: Partial<Guest>): void {
-    this.guestSubject.next(guest);
+    const currentGuest = this.guestSubject.getValue();
+    const updatedGuest = { ...currentGuest, ...guest };
+    this.guestSubject.next(updatedGuest);
   }
 
   async saveEvent(): Promise<void> {
@@ -57,7 +59,7 @@ export class EventService {
   }
 
   async loadEvent(idOrAlias: string): Promise<Event> {
-    return firstValueFrom(
+    const event = await firstValueFrom(
       this.apiService.httpGet(`events/${idOrAlias}`).pipe(
         map((event: Event) => ({
           ...event,
@@ -65,6 +67,10 @@ export class EventService {
         })),
       ),
     );
+
+    this.toggleEvent(event);
+
+    return event;
   }
 
   async addGuest(): Promise<void> {
