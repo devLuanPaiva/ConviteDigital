@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
     FormGuestComponent,
     LoadingComponent,
     CommonModule,
-],
+  ],
   templateUrl: './invitation.component.html',
 })
 export class InvitationComponent implements OnInit {
@@ -31,20 +31,21 @@ export class InvitationComponent implements OnInit {
   ) {}
   async ngOnInit(): Promise<void> {
     const alias = this.route.snapshot.paramMap.get('alias');
+
     if (alias) {
       try {
-        this.eventService.loadEvent(alias);
-        this.eventService.event$.subscribe((eventData) => {
-          if (eventData) {
-            this.event = eventData as Event;
-            this.guest = eventData.guests ? eventData.guests[0] : null;
-          }
-        });
+        const eventData = await this.eventService.loadEvent(alias);
+
+        if (eventData) {
+          this.event = eventData;
+          this.guest = eventData.guests ? eventData.guests[0] : null;
+        }
       } catch (error) {
         console.error('Erro ao carregar o evento:', error);
       }
     }
   }
+
   changeGuest(guest: Partial<Guest>) {
     this.eventService.toggleGuest(guest);
   }
