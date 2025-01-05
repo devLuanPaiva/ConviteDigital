@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
 import {
   Event,
   Guest,
@@ -56,15 +56,17 @@ export class EventService {
     }
   }
 
-  loadEvent(idOrAlias: string): Observable<Event> {
-    return this.apiService.httpGet(`events/${idOrAlias}`).pipe(
-      map((event: Event) => ({
-        ...event,
-        date: DateFormatter.unformat(event.date.toString()),
-      }))
+  async loadEvent(idOrAlias: string): Promise<Event> {
+    return firstValueFrom(
+      this.apiService.httpGet(`events/${idOrAlias}`).pipe(
+        map((event: Event) => ({
+          ...event,
+          date: DateFormatter.unformat(event.date.toString()),
+        })),
+      ),
     );
   }
-  
+
   async addGuest(): Promise<void> {
     try {
       const currentEvent = this.eventSubject.getValue();
