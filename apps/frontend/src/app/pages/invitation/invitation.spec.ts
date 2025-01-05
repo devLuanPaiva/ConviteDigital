@@ -100,5 +100,9 @@ describe('InvitationComponent', () => {
 
     expect(mockEventService.toggleGuest).toHaveBeenCalledWith(guest);
   });
+  it('should add guest when addGuest is called', () => {
+    component.addGuest();
 
+    expect(mockEventService.addGuest).toHaveBeenCalled();
+  });
 });
