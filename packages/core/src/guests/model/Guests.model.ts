@@ -1,6 +1,6 @@
 export default interface Guest {
   id: string;
-  name: string;
+  guestName: string;
   email: string;
   confirmed: boolean;
   hasCompanions: boolean;
