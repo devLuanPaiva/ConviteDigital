@@ -30,6 +30,13 @@ export const routes: Routes = [
         (m) => m.ThankPageModule,
       ),
   },
+  {
+    path: 'eventos',
+    loadChildren: () =>
+      import('./pages/events/events.module').then(
+        (m) => m.EventsModule,
+      ),
+  },
 ];
 
 @NgModule({
