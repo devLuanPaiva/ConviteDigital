@@ -51,7 +51,7 @@ describe('FormGuestComponent', () => {
     nameInput.nativeElement.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
-    expect(component.guest.name).toBe('New Name');
+    expect(component.guest.guestName).toBe('New Name');
     expect(component.guestChanged.emit).toHaveBeenCalledWith({
       name: 'New Name',
     });

@@ -15,7 +15,7 @@ export class EventProvider {
   saveGuest(event: Event, guest: Guest) {
     return this.prisma.guest.create({
       data: {
-        guestName: guest.name,
+        guestName: guest.guestName,
         numberOfCompanions: +(guest.numberOfCompanions ?? 0),
         confirmed: guest.confirmed,
         email: guest.email,

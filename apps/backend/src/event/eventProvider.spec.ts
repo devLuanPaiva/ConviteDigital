@@ -90,7 +90,7 @@ describe('EventProvider', () => {
     expect(prismaMock.guest.create).toHaveBeenCalledWith({
       data: {
         ...guest,
-        guestName: guest.name,
+        guestName: guest.guestName,
         event: { connect: { id: event.id } },
       },
     });
