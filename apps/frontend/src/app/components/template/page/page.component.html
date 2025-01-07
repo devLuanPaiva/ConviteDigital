@@ -1,6 +1,14 @@
-<div class="flex-1 flex flex-col items-center py-10 min-h-screen " [ngStyle]="{ background: 'url(public/background.png)' }">
-    <app-logo/>
-    <main class="flex-1 flex flex-col justify-center py-10 container" >
-        <router-outlet/>
+<div 
+  class="flex-1 flex flex-col items-center py-10 min-h-screen" 
+  [ngStyle]="{ 
+    'background-image': 'url(\'/assets/background.png\')', 
+    'background-size': 'cover', 
+    'background-position': 'center', 
+    'background-repeat': 'no-repeat' 
+  }"
+>
+    <app-logo></app-logo>
+    <main class="flex-1 flex flex-col justify-center py-10 container">
+        <router-outlet></router-outlet>
     </main>
 </div>
