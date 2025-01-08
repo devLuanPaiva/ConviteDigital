@@ -24,4 +24,15 @@ describe('InputComponent', () => {
     ).nativeElement;
     expect(labelElement.textContent).toBe(' Test Label ');
   });
+  it('should emit valueChange when the input value changes', () => {
+    spyOn(component.valueChange, 'emit');
+
+    const inputElement = fixture.debugElement.query(
+      By.css('input'),
+    ).nativeElement;
+    inputElement.value = 'New value';
+    inputElement.dispatchEvent(new Event('input'));
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith('New value');
+  });
 });
