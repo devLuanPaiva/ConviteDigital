@@ -46,4 +46,14 @@ describe('ClipboardComponent', () => {
 
     expect(component.textCopy).toHaveBeenCalled();
   });
+  it('should copy the text to the clipboard and show success message', async () => {
+    spyOn(navigator.clipboard, 'writeText').and.resolveTo();
+    component.text = 'Text to Copy';
+    component.textCopy();
+
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Text to Copy');
+    expect(messageServiceSpy.success).toHaveBeenCalledWith(
+      'Texto copiado com sucesso!',
+    );
+  });
 });
