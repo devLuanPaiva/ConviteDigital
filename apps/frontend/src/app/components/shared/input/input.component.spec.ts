@@ -44,4 +44,13 @@ describe('InputComponent', () => {
     ).nativeElement;
     expect(inputElement.type).toBe('password');
   });
+  it('should apply the outterClassName to the form', () => {
+    component.outterClassName = 'custom-class';
+    fixture.detectChanges();
+
+    const formElement = fixture.debugElement.query(
+      By.css('form'),
+    ).nativeElement;
+    expect(formElement.classList).toContain('custom-class');
+  });
 });
