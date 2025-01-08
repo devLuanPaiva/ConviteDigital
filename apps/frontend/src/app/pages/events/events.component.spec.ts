@@ -57,4 +57,11 @@ describe('EventsComponent', () => {
 
     service.loadAllEvents();
   });
+  it('should have the correct admin link', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const adminLink = compiled
+      .querySelector('a.button.red')
+      ?.getAttribute('href');
+    expect(adminLink).toContain('/evento/admin');
+  });
 });
