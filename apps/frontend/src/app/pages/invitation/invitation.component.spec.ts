@@ -22,7 +22,7 @@ describe('InvitationComponent', () => {
     guests: [
       {
         id: '12345',
-        name: 'Guest 1',
+        guestName: 'Guest 1',
         confirmed: false,
         email: '',
         hasCompanions: false,
@@ -94,7 +94,7 @@ describe('InvitationComponent', () => {
     expect(component.guest).toBeNull();
   });
   it('should toggle guest when changeGuest is called', () => {
-    const guest: Partial<Guest> = { id: '4423423', name: 'Guest 1' };
+    const guest: Partial<Guest> = { id: '4423423', guestName: 'Guest 1' };
     component.changeGuest(guest);
 
     expect(mockEventService.toggleGuest).toHaveBeenCalledWith(guest);

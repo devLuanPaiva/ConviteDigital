@@ -1,6 +1,6 @@
 # CONVIT3 DIGITAL
 
-## Versão 2.5
+## Versão 3.0
 
 O **CONVIT3 DIGITAL** é um sistema inovador desenvolvido para criar e gerenciar convites de eventos de maneira digital, rápida e fácil. Com uma interface moderna e funcional, ele foi projetado para atender às necessidades de organizadores de eventos que buscam uma solução prática e eficiente.
 
@@ -40,7 +40,7 @@ O sistema está sendo desenvolvido em um **monorepo** e utiliza as seguintes tec
 ## ✅ Cobertura de Testes
 
 
-O **CONVIT3 DIGITAL** já possui mais de **82 testes aprovados**, garantindo a qualidade e confiabilidade das funcionalidades desenvolvidas.
+O **CONVIT3 DIGITAL** já possui mais de **100 testes aprovados**, garantindo a qualidade e confiabilidade das funcionalidades desenvolvidas.
 
 ---
 

@@ -7,7 +7,15 @@
     'background-repeat': 'no-repeat' 
   }"
 >
-    <app-logo></app-logo>
+    <nav class="w-full flex justify-between items-center px-6">
+        <app-logo></app-logo>
+        <a 
+          href="/eventos" 
+          class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 hover:shadow-lg transition-all duration-300"
+        >
+          Eventos
+        </a>
+    </nav>
     <main class="flex-1 flex flex-col justify-center py-10 container">
         <router-outlet></router-outlet>
     </main>
