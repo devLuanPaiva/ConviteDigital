@@ -42,4 +42,9 @@ describe('EventsComponent', () => {
     expect(component.dynamicEvents[0].name).toBe('Event 1');
     expect(mockEventService.loadAllEvents).toHaveBeenCalled();
   });
+  it('should render event names in the template', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const eventName = compiled.querySelector('h2')?.textContent;
+    expect(eventName).toContain('Event 1');
+  });
 });
