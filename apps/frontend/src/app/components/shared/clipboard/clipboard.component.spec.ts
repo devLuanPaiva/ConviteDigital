@@ -56,4 +56,15 @@ describe('ClipboardComponent', () => {
       'Texto copiado com sucesso!',
     );
   });
+  it('should trigger textCopy on Enter keydown', () => {
+    spyOn(component, 'textCopy');
+    const copyIcon = fixture.debugElement.query(
+      By.css('.cursor-pointer'),
+    ).nativeElement;
+
+    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    copyIcon.dispatchEvent(event);
+
+    expect(component.textCopy).toHaveBeenCalled();
+  });
 });
