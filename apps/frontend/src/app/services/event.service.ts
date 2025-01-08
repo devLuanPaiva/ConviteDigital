@@ -112,4 +112,8 @@ export class EventService {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }
   }
+  clearState(): void {
+    this.eventSubject.next(createNullEvent());
+    this.guestSubject.next(createNullGuest());
+  }
 }
