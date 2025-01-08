@@ -25,23 +25,23 @@ describe('FormGuestComponent', () => {
   });
   it('should emit updated guest data when onGuestChange is called', () => {
     spyOn(component.guestChanged, 'emit');
-    component.guest = { name: 'Test Guest', email: 'test@example.com' };
+    component.guest = { guestName: 'Test Guest', email: 'test@example.com' };
 
     const changes = { email: 'updated@example.com' };
     component.onGuestChange(changes);
 
     expect(component.guest).toEqual({
-      name: 'Test Guest',
+      guestName: 'Test Guest',
       email: 'updated@example.com',
     });
     expect(component.guestChanged.emit).toHaveBeenCalledWith({
-      name: 'Test Guest',
+      guestName: 'Test Guest',
       email: 'updated@example.com',
     });
   });
   it('should update guest name when the input changes', () => {
     spyOn(component.guestChanged, 'emit');
-    component.guest = { name: '' };
+    component.guest = { guestName: '' };
 
     fixture.detectChanges();
     const nameInput = fixture.debugElement.query(
@@ -53,7 +53,7 @@ describe('FormGuestComponent', () => {
     fixture.detectChanges();
     expect(component.guest.guestName).toBe('New Name');
     expect(component.guestChanged.emit).toHaveBeenCalledWith({
-      name: 'New Name',
+      guestName: 'New Name',
     });
   });
 });
