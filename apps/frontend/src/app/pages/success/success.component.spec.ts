@@ -37,10 +37,6 @@ describe('SuccessComponent', () => {
       ],
       providers: [{ provide: EventService, useValue: mockEventService }],
     }).compileComponents();
-
-    eventServiceSpy = TestBed.inject(
-      EventService,
-    ) as jasmine.SpyObj<EventService>;
   });
 
   beforeEach(() => {
