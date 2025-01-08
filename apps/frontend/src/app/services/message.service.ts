@@ -8,7 +8,7 @@ export class MessageService {
 
   private showMessage(type: 'success' | 'error', text: string): void {
     this.snack.open(
-      type === 'success' ? 'Tudo certo por aqui!' : 'Oops, algo deu errado!',
+      type === 'success' ? text :`Oops, algo deu errado! ${text}`,
       'Close',
       {
         duration: 5000,
