@@ -28,4 +28,19 @@ describe('MessageService', () => {
       verticalPosition: 'top',
     });
   });
+  it('should show an error message', () => {
+    const errorMessage = 'An error occurred.';
+    service.error(errorMessage);
+
+    expect(snackBarSpy.open).toHaveBeenCalledWith(
+      `Oops, algo deu errado! ${errorMessage}`,
+      'Close',
+      {
+        duration: 5000,
+        panelClass: 'toast-error',
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      },
+    );
+  });
 });
