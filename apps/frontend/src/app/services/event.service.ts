@@ -14,6 +14,7 @@ import {
   providedIn: 'root',
 })
 export class EventService {
+  private readonly eventsSubject = new BehaviorSubject<Event[]>([]);
   private readonly eventSubject = new BehaviorSubject<Partial<Event>>(
     createNullEvent(),
   );
@@ -22,6 +23,7 @@ export class EventService {
   );
   private readonly aliasValidSubject = new BehaviorSubject<boolean>(true);
 
+  allEvents$ = this.eventsSubject.asObservable();
   event$ = this.eventSubject.asObservable();
   guest$ = this.guestSubject.asObservable();
   aliasValid$ = this.aliasValidSubject.asObservable();
@@ -30,9 +32,17 @@ export class EventService {
     private readonly apiService: ApiService,
     private readonly route: Router,
   ) {}
+
+  loadAllEvents(): void {
+    this.apiService.httpGet('events').subscribe((events: Event[]) => {
+      this.eventsSubject.next(events ?? []);
+    });
+  }
+
   toggleEvent(event: Partial<Event>): void {
     this.eventSubject.next(event);
   }
+
   toggleGuest(guest: Partial<Guest>): void {
     const currentGuest = this.guestSubject.getValue();
     const updatedGuest = { ...currentGuest, ...guest };
@@ -88,6 +98,7 @@ export class EventService {
       console.error(error.message || 'Ocorreu um erro inesperado!');
     }
   }
+
   async validateAlias(): Promise<void> {
     try {
       const currentEvent = this.eventSubject.getValue();

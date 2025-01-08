@@ -3,7 +3,7 @@ import Guest from '../model/Guests.model';
 export default function validateGuest(guest: Partial<Guest>): string[] {
   const errors: string[] = [];
 
-  if (!guest.name) {
+  if (!guest.guestName) {
     errors.push('Nome é obrigatório');
   }
 

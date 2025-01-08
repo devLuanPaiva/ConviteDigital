@@ -1,8 +1,8 @@
 <div class="flex flex-col gap-5">
     <app-input
         label="Nome"
-        [value]="guest?.name || ''"
-        (valueChange)="onGuestChange({ name: $event!.toString() })" />
+        [value]="guest?.guestName || ''"
+        (valueChange)="onGuestChange({ guestName: $event!.toString() })" />
     <app-input
         label="Email"
         [value]="guest?.email || ''"

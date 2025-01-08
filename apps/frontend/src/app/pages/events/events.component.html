@@ -1,0 +1,27 @@
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
+  <article
+    class="flex flex-col w-full overflow-hidden bg-zinc-800 rounded-lg"
+    *ngFor="let event of dynamicEvents">
+    <figure class="relative w-full h-52 overflow-hidden">
+      <img [src]="event.image" [alt]="event.name"
+        class="object-cover w-full h-full">
+    </figure>
+    <section class="flex-1 flex flex-col items-center p-5 gap-4 text-center">
+      <h2 class="text-lg font-black">{{ event.name }}</h2>
+      <p class="flex-1 text-sm text-zinc-400">{{ event.description }}</p>
+      <app-access-by-qr-code [event]="event"></app-access-by-qr-code>
+      <nav class="flex gap-4 flex-wrap justify-center w-full">
+        <a
+          [routerLink]="['/evento/admin', event.id, event.password]"
+          class="flex-1 button red min-w-[120px]">
+          Admin
+        </a>
+        <a
+          [routerLink]="['/evento/convite', event.alias]"
+          class="flex-1 button green min-w-[120px]">
+          Convite
+        </a>
+      </nav>
+    </section>
+  </article>
+</section>

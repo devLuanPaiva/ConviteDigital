@@ -18,7 +18,7 @@ const events: Event[] = [
     guests: [
       {
         id: '9db594ba-2015-4126-923b-9453d7edd552',
-        name: 'Alice Silva',
+        guestName: 'Alice Silva',
         email: 'alice@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -26,7 +26,7 @@ const events: Event[] = [
       },
       {
         id: '7f76598d-5025-45d7-950a-45dbc52307ab',
-        name: 'Carlos Pereira',
+        guestName: 'Carlos Pereira',
         email: 'carlos@example.com',
         confirmed: false,
         hasCompanions: false,
@@ -34,7 +34,7 @@ const events: Event[] = [
       },
       {
         id: 'be33b1e3-6d44-45d3-80dc-c9a4b61e389a',
-        name: 'Beatriz Lima',
+        guestName: 'Beatriz Lima',
         email: 'beatriz@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -58,7 +58,7 @@ const events: Event[] = [
     guests: [
       {
         id: 'ce7781f9-ce90-480b-b33f-79551b436b30',
-        name: 'Eduardo Santos',
+        guestName: 'Eduardo Santos',
         email: 'eduardo@example.com',
         confirmed: true,
         hasCompanions: false,
@@ -66,7 +66,7 @@ const events: Event[] = [
       },
       {
         id: '89fe8fda-bdd2-4a0c-aa4c-efed7a4da7a7',
-        name: 'Fernanda Costa',
+        guestName: 'Fernanda Costa',
         email: 'fernanda@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -90,7 +90,7 @@ const events: Event[] = [
     guests: [
       {
         id: '961e8ef3-8492-4bb6-8e99-4e07d175a18c',
-        name: 'Gabriela Rocha',
+        guestName: 'Gabriela Rocha',
         email: 'gabriela@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -98,7 +98,7 @@ const events: Event[] = [
       },
       {
         id: 'c9807f9f-d3c8-4dee-b49c-ae09cf3329e8',
-        name: 'Hugo Nogueira',
+        guestName: 'Hugo Nogueira',
         email: 'hugo@example.com',
         confirmed: false,
         hasCompanions: false,
@@ -106,7 +106,7 @@ const events: Event[] = [
       },
       {
         id: 'd4f25df3-bd22-4b1d-a6ba-c8fd625ef117',
-        name: 'Isabela Martins',
+        guestName: 'Isabela Martins',
         email: 'isabela@example.com',
         confirmed: true,
         hasCompanions: false,
@@ -131,7 +131,7 @@ const events: Event[] = [
     guests: [
       {
         id: 'c7f15188-0f9a-454e-8d05-694308106b21',
-        name: 'Bruno Cardoso',
+        guestName: 'Bruno Cardoso',
         email: 'bruno@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -139,7 +139,7 @@ const events: Event[] = [
       },
       {
         id: '384493ec-f538-4af0-95bb-eff54a17d7eb',
-        name: 'Carla Mendes',
+        guestName: 'Carla Mendes',
         email: 'carla@example.com',
         confirmed: true,
         hasCompanions: false,
@@ -164,7 +164,7 @@ const events: Event[] = [
     guests: [
       {
         id: '62f27c65-d52e-4e4b-aeb1-e6c861539806',
-        name: 'Maria Souza',
+        guestName: 'Maria Souza',
         email: 'maria@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -172,7 +172,7 @@ const events: Event[] = [
       },
       {
         id: 'eb5d60e7-ee91-4d6f-8365-33a2ef65ffd7',
-        name: 'José Almeida',
+        guestName: 'José Almeida',
         email: 'jose@example.com',
         confirmed: false,
         hasCompanions: false,
@@ -197,7 +197,7 @@ const events: Event[] = [
     guests: [
       {
         id: '56d33644-21e0-45d6-8374-b63492542957',
-        name: 'Cláudia Lima',
+        guestName: 'Cláudia Lima',
         email: 'claudia@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -205,7 +205,7 @@ const events: Event[] = [
       },
       {
         id: '08ce7902-a86f-4991-97bc-8cf5661fa328',
-        name: 'Ricardo Barbosa',
+        guestName: 'Ricardo Barbosa',
         email: 'ricardo@example.com',
         confirmed: true,
         hasCompanions: false,
@@ -229,7 +229,7 @@ const events: Event[] = [
     guests: [
       {
         id: '70aad3a8-3307-4b4b-a8c6-a3796b7aef66',
-        name: 'Thiago Oliveira',
+        guestName: 'Thiago Oliveira',
         email: 'thiago@example.com',
         confirmed: true,
         hasCompanions: true,
@@ -237,7 +237,7 @@ const events: Event[] = [
       },
       {
         id: '5cf2c395-a931-4234-889f-7a8701c8e5fc',
-        name: 'Letícia Oliveira',
+        guestName: 'Letícia Oliveira',
         email: 'leticia@example.com',
         confirmed: true,
         hasCompanions: false,

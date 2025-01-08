@@ -34,7 +34,7 @@ describe('DashboardEventComponent', () => {
       hasCompanions: false,
       numberOfCompanions: 0,
       id: '',
-      name: '',
+      guestName: '',
       email: '',
     },
   ];
@@ -44,7 +44,7 @@ describe('DashboardEventComponent', () => {
       hasCompanions: false,
       numberOfCompanions: 0,
       id: '',
-      name: '',
+      guestName: '',
       email: '',
     },
   ];

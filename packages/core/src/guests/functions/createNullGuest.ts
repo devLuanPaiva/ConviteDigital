@@ -4,7 +4,7 @@ import Guest from "../model/Guests.model";
 export default function createNullGuest(): Partial<Guest>{
     return{
         id: Id.new(),
-        name: "",
+        guestName: "",
         email: "",
         confirmed: true,
         hasCompanions: false,
