@@ -34,4 +34,16 @@ describe('ClipboardComponent', () => {
     expect(labelElement.textContent).toBe('Label Test');
     expect(textElement.textContent).toBe('Test Text');
   });
+  it('should call textCopy when the copy icon is clicked', () => {
+    spyOn(component, 'textCopy');
+    component.text = 'Test Copy Text';
+    fixture.detectChanges();
+
+    const copyIcon = fixture.debugElement.query(
+      By.css('.cursor-pointer'),
+    ).nativeElement;
+    copyIcon.click();
+
+    expect(component.textCopy).toHaveBeenCalled();
+  });
 });
