@@ -35,4 +35,13 @@ describe('InputComponent', () => {
 
     expect(component.valueChange.emit).toHaveBeenCalledWith('New value');
   });
+  it('should set the input type based on the "type" input property', () => {
+    component.type = 'password';
+    fixture.detectChanges();
+
+    const inputElement = fixture.debugElement.query(
+      By.css('input'),
+    ).nativeElement;
+    expect(inputElement.type).toBe('password');
+  });
 });
