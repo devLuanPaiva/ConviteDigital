@@ -47,4 +47,14 @@ describe('EventsComponent', () => {
     const eventName = compiled.querySelector('h2')?.textContent;
     expect(eventName).toContain('Event 1');
   });
+  it('should fetch events from the service', (done) => {
+    const service = TestBed.inject(EventService);
+
+    service.allEvents$.subscribe((events) => {
+      expect(events.length).toBeGreaterThan(0);
+      done();
+    });
+
+    service.loadAllEvents();
+  });
 });
