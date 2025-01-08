@@ -57,4 +57,7 @@ describe('SuccessComponent', () => {
       password: 'admin123',
     });
   });
+  it('should set currentURL on initialization', () => {
+    expect(component.currentURL).toBe(window.location.origin);
+  });
 });
