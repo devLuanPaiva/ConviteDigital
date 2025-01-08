@@ -39,7 +39,6 @@ O sistema está sendo desenvolvido em um **monorepo** e utiliza as seguintes tec
 
 ## ✅ Cobertura de Testes
 
-
 O **CONVIT3 DIGITAL** já possui mais de **100 testes aprovados**, garantindo a qualidade e confiabilidade das funcionalidades desenvolvidas.
 
 ---
