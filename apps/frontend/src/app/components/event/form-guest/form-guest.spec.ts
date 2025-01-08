@@ -3,7 +3,6 @@ import { FormGuestComponent } from './form-guest.component';
 import { InputComponent } from '../../shared/input/input.component';
 import { InputBooleanComponent } from '../../shared/input-boolean/input-boolean.component';
 import { CommonModule } from '@angular/common';
-import { Guest } from 'core';
 import { By } from '@angular/platform-browser';
 
 describe('FormGuestComponent', () => {
