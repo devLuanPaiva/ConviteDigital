@@ -53,4 +53,13 @@ describe('InputComponent', () => {
     ).nativeElement;
     expect(formElement.classList).toContain('custom-class');
   });
+  it('should display the error message if provided', () => {
+    component.error = 'Test Error';
+    fixture.detectChanges();
+
+    const errorElement = fixture.debugElement.query(
+      By.css('span'),
+    ).nativeElement;
+    expect(errorElement.textContent).toBe('Test Error');
+  });
 });
