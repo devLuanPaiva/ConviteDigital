@@ -62,4 +62,14 @@ describe('InputComponent', () => {
     ).nativeElement;
     expect(errorElement.textContent).toBe('Test Error');
   });
+  it('should display the observation if provided and no error', () => {
+    component.observation = 'Test Observation';
+    component.error = undefined;
+    fixture.detectChanges();
+
+    const observationElement = fixture.debugElement.query(
+      By.css('p.text-yellow-300'),
+    ).nativeElement;
+    expect(observationElement.textContent).toBe(' Test Observation ');
+  });
 });
