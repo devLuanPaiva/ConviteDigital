@@ -7,16 +7,22 @@ import { InputComponent } from '../../shared/input/input.component';
   templateUrl: './event-password-form.component.html',
 })
 export class EventPasswordFormComponent {
-  @Input() password: string
+  @Input() id: string
+  @Input() password: string;
   @Output() accessEvent = new EventEmitter<string>();
   @Output() changePassword = new EventEmitter<string>();
 
-  onChangePassword(newPassword: string): void{
+  onChangePassword(newPassword: string): void {
     this.changePassword.emit(newPassword);
     this.password = newPassword;
   }
-  
-  onAccessEvent(): void {
-    this.accessEvent.emit();
+
+  onAccessEvent(event: Event): void {
+    event.preventDefault();
+    if (!this.password || this.password.trim() === '') {
+      console.error('Senha não pode estar vazia');
+      return;
+    }
+    this.accessEvent.emit(this.password);
   }
 }
