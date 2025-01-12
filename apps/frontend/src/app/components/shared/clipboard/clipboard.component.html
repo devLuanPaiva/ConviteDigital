@@ -16,6 +16,14 @@
             (keydown.enter)="textCopy()"
             [ngClass]="{ stroke: '1.3' }"
             aria-label="Copiar texto" />
+        <fa-icon
+            [icon]="faLink"
+            (click)="openLink($event)"
+            class="cursor-pointer"
+            tabindex="0"
+            (keydown.enter)="openLink($event)"
+            [ngClass]="{ stroke: '1.3' }"
+            aria-label="Abrir link" />
     </div>
     <p *ngIf="observation" class="text-xs text-yellow-300/80">
         {{ observation}}
