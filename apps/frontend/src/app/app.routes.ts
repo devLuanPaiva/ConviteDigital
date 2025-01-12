@@ -12,7 +12,7 @@ export const routes: Routes = [
       import('./pages/success/success.module').then((m) => m.SuccessModule),
   },
   {
-    path: 'evento/admin/:id/:password',
+    path: 'evento/admin',
     loadChildren: () =>
       import('./pages/admin/admin.module').then((m) => m.AdminModule),
   },
@@ -33,9 +33,7 @@ export const routes: Routes = [
   {
     path: 'eventos',
     loadChildren: () =>
-      import('./pages/events/events.module').then(
-        (m) => m.EventsModule,
-      ),
+      import('./pages/events/events.module').then((m) => m.EventsModule),
   },
 ];
 

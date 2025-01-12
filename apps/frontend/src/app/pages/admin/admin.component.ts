@@ -14,6 +14,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class AdminComponent implements OnInit {
   event: Event | null = null;
+  id: string = '';
   password: string = '';
   presents: Guest[] = [];
   absents: Guest[] = [];
@@ -27,7 +28,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    const password = this.route.snapshot.paramMap.get('password');
+    const password = this.route.snapshot.queryParamMap.get('password');
+    this.id = id;
     if (id && password) {
       const decodedPassword = decodeURIComponent(password);
       this.password = decodedPassword;
