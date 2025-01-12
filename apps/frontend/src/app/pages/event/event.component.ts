@@ -18,6 +18,7 @@ export class EventComponent implements OnInit {
   constructor(private readonly eventService: EventService) {}
 
   ngOnInit(): void {
+    this.eventService.clearState()
     this.subscription = this.eventService.event$.subscribe((event) => {
       this.event = event;
     });
