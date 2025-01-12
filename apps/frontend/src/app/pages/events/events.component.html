@@ -11,11 +11,11 @@
       <p class="flex-1 text-sm text-zinc-400">{{ event.description }}</p>
       <app-access-by-qr-code [event]="event"></app-access-by-qr-code>
       <nav class="flex gap-4 flex-wrap justify-center w-full">
-        <a
-          [routerLink]="['/evento/admin', event.id, event.password]"
-          class="flex-1 button red min-w-[120px]">
+        <button
+          class="flex-1 button red min-w-[120px]"
+          (click)="navigateToAdmin(event.id, event.password)">
           Admin
-        </a>
+        </button>
         <a
           [routerLink]="['/evento/convite', event.alias]"
           class="flex-1 button green min-w-[120px]">
