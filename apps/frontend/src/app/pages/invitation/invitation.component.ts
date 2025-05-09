@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
 })
 export class InvitationComponent implements OnInit {
   event: Event | null = null;
-  guest: Guest | null = null;
+  guest: Partial<Guest> | null = null;
   subscriptions: Subscription = new Subscription();
 
   constructor(
@@ -38,7 +38,11 @@ export class InvitationComponent implements OnInit {
 
         if (eventData) {
           this.event = eventData;
-          this.guest = eventData.guests ? eventData.guests[0] : null;
+          this.subscriptions.add(
+            this.eventService.guest$.subscribe((guest) => {
+              this.guest = guest;
+            }),
+          );
         }
       } catch (error) {
         console.error('Erro ao carregar o evento:', error);
